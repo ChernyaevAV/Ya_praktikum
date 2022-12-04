@@ -1,18 +1,13 @@
-# ID: 77924009
-
-
-def evaluate(a, b, expression):
-    exp_dict = {
-        '+': a + b,
-        '-': a - b,
-        '*': a * b,
-        '/': a // b if b != 0 else None,
-    }
-
-    return exp_dict[expression]
-
+# ID: 78316533
 
 def calculate(exp_str: str) -> [int, str]:
+    OPERATIONS = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x // y,
+    }
+
     exp_str = exp_str.split()
     operations = '+-*/'
     stack = []
@@ -26,7 +21,7 @@ def calculate(exp_str: str) -> [int, str]:
             b = int(stack.pop())
             a = int(stack.pop())
             expression = elem
-            result = evaluate(a, b, expression)
+            result = OPERATIONS[elem](a, b)
             stack.append(result)
     if expression is None:
         return int(''.join(stack.pop()))
