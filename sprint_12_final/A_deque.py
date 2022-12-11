@@ -6,14 +6,10 @@ from typing import List, Union
 #  не получается вызвать исключение и продолжить исполнение кода
 class DequeIsFullError(Exception):
     """Вызывается при попытке вставить в полный дэк"""
-    def __str__(self):
-        print('error')
 
 
 class EmptyDequeError(Exception):
     """Вызывается при запросе данных из пустого дэка"""
-    def __str__(self):
-        return 'error'
 
 
 class MyDequeSized:
@@ -37,7 +33,7 @@ class MyDequeSized:
         """Добавляет значение в начало дека,
         если дек полный возвращает 'error'."""
         if self.__size >= self.__max_size:
-            print('error')                      # иначе тесты не могу пройти
+            print('error')
         else:
             self.__head = self._calc_idx(self.__head)
             self.__queue[self.__head] = item
@@ -57,7 +53,7 @@ class MyDequeSized:
         """Удаляет и выводит значение из началао дека,
         если дек пустой возвращает 'error'."""
         if self._is_empty():
-            return 'error'                      # иначе тесты не могу пройти
+            return 'error'
         item = self.__queue[self.__head]
         self.__queue[self.__head] = None
         self.__head = self._calc_idx(self.__head, True)
