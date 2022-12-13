@@ -5,7 +5,7 @@ def permute(string):
     else:
         for char in string:
             [permutation_list.append(char + a)
-             for a in permute(string.replace(char, "", 1))]
+             for a in permute(string[3:].replace(char, "", 1))]
     return permutation_list
 
 
