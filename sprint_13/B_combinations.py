@@ -1,31 +1,27 @@
-def permute(string):
-    permutation_list = []
-    if len(string) == 1:
-        return [string]
+def permute(buttons):
+    num_letters = {
+        '2': 'abc',
+        '3': 'def',
+        '4': 'ghi',
+        '5': 'jkl',
+        '6': 'mno',
+        '7': 'pqrs',
+        '8': 'tuv',
+        '9': 'wxyz'
+    }
+    if len(buttons) == 1:
+        return list(num_letters[buttons[0]])
     else:
-        for char in string:
-            [permutation_list.append(char + a)
-             for a in permute(string.replace(char, "", 1))]
-    return permutation_list
+        res = ['']
+        for num in buttons:
+            letters = num_letters.get(num, '')
+            res = [prefix + letter for prefix in res for letter in letters]
+        return res
 
 
 def main():
-    letters = {
-        2: 'abc',
-        3: 'def',
-        4: 'ghi',
-        5: 'jkl',
-        6: 'mno',
-        7: 'pqrs',
-        8: 'tuv',
-        9: 'wxyz'
-    }
-    buttons = list(map(int, list(input())))
-
-    string = []
-    for button in buttons:
-        string.append(letters[button])
-    print(permute(string))
+    buttons = input().strip()
+    print(*permute(buttons))
 
 
 if __name__ == '__main__':
