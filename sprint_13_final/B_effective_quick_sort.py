@@ -1,5 +1,4 @@
 # ID: 79866754
-from random import sample
 
 
 def quicksort(array, start, end):
@@ -10,7 +9,7 @@ def quicksort(array, start, end):
 
 
 def partition(array, left, right):
-    pivot = sample(array[left:right],1)[0]
+    pivot = array[left]
     l = left + 1
     r = right - 1
 
@@ -29,7 +28,7 @@ def partition(array, left, right):
 
 def read_data():
     n = int(input())
-    res = [[-int(completed), int(penalty), name]
+    res = [(-int(completed), int(penalty), name)
            for name, completed, penalty
            in [input().strip().split() for _ in range(n)]]
     return res

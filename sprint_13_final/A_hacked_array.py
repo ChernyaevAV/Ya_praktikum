@@ -27,6 +27,16 @@ def broken_search(nums, target) -> int:
     return index
 
 
+def main():
+    arr = list(map(int, input().strip().split()))
+    target = int(input())
+    print(broken_search(arr, target))
+
+
+if __name__ == '__main__':
+    main()
+
+
 def test():
     arr = [19, 21, 100, 101, 1, 4, 5, 7, 12]
     assert broken_search(arr, 5) == 6
