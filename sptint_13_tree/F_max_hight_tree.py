@@ -11,19 +11,10 @@ if LOCAL:
             self.left = left
 
 
-def get_height(root):
+def solution(root) -> int:
     if root is None:
         return 0
-    return max(get_height(root.left), get_height(root.right)) + 1
-
-
-def solution(root) -> bool:
-    if root is None:
-        return True
-
-    return (solution(root.left) and
-            solution(root.right) and
-            abs(get_height(root.left) - get_height(root.right)) <= 1)
+    return max(solution(root.left), solution(root.right)) + 1
 
 
 def test():
@@ -32,7 +23,8 @@ def test():
     node3 = Node(3, node1, node2)
     node4 = Node(10)
     node5 = Node(2, node3, node4)
-    assert solution(node5)
+
+    assert solution(node5) == 3
 
 
 if __name__ == '__main__':
