@@ -1,33 +1,32 @@
-# def find_smallest(arr):
-#     smallest = arr[0]
-#     smallest_idx = 0
-#     for i in range(1, len(arr)):
-#         if arr[i] < smallest:
-#             smallest = arr[i]
-#             smallest_idx = i
-#     return smallest_idx
-#
-#
-# def selection_sort(arr):
-#     new_arr = []
-#     for i in range(len(arr)):
-#         smallest = find_smallest(arr)
-#         new_arr.append(arr.pop(smallest))
-#     return new_arr
-#
-#
-# print(*selection_sort([5, 3, 6, 2, 10]))
+def insertion_sort(array):
+    for i in range(len(array)):
+        item_to_insert = array[i]
+        j = i
+        while j > 0 and item_to_insert < array[j-1]:
+            array[j] = array[j-1]
+            j -= 1
+        array[j] = item_to_insert
+        print(f'step {i}, sorted {i+1} elements: {array}')
 
 
-letters = {
-    2: 'abc',
-    3: 'def',
-    4: 'ghi',
-    5: 'jkl',
-    6: 'mno',
-    7: 'pqrs',
-    8: 'tuv',
-    9: 'wxyz'
-}
+def insertion_sort2(array):
+    for i in range(len(array)):
+        item_to_insert = array[i]
+        j = i
+        while j > 0 and item_to_insert < array[j-1]:
+            array[j], array[j-1] = array[j-1], array[j]
+            j -= 1
+        print(f'step {i}, sorted {i+1} elements: {array}')
 
-print(list(zip(letters[2], letters[3])))
+
+def select_sort(array):
+    for i in range(len(array) - 1):
+        for k in range(i+1, len(array)):
+            if array[k] < array[i]:
+                array[k], array[i] = array[i], array[k]
+        print(f'step {i}, sorted {i+1} elements: {array}')
+
+
+# insertion_sort([11, 2, 9, 7, 1])
+# insertion_sort2([11, 2, 9, 7, 1])
+select_sort([11, 2, 9, 7, 1])
